@@ -1,0 +1,114 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"IUserAddResponse": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"_id",
+					"name",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IUserAdd": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"jwt": {
+				"type": "http",
+				"scheme": "Bearer",
+				"name": "Authorization",
+				"in": "header"
+			},
+			"api_key": {
+				"type": "apiKey",
+				"name": "admin_token",
+				"in": "query"
+			}
+		}
+	},
+	"info": {
+		"title": "restaurant",
+		"version": "1.3.0",
+		"description": "We are going to build restaurant api",
+		"license": {
+			"name": "MIT"
+		},
+		"contact": {
+			"name": "author@gmail.com"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/user/saveUser": {
+			"post": {
+				"operationId": "SaveUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IUserAddResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/IUserAdd"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
